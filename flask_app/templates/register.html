@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quest+Aid</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="d-flex justify-content-between">
+        <img src="" alt=""><h1>Quest+Aid</h1>
+        <h2>Sign Up</h2>
+    </div>
+    <div class="d-flex justify-content-between">
+    <div class="col-6">
+        <h3> Register: </h3>
+        {% for message in get_flashed_messages(category_filter=['reg']) %}
+            <p>{{message}}</p>
+        {% endfor %}
+        <form class='d flex flex-cloumn align-items-end' action="/users/register" method="post">
+            <div class="mb-3">
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="password2">Verify Password:</label>
+                <input type="password" name="confirm_pass" id="password2" class="form-control">
+            </div>
+            <button class="btn btn-primary">Register</button>
+        </form>
+    </div>
+        <img src="https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=400" alt="">
+    </div>
+</body>
+</html>

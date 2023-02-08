@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="d-flex justify-content-between">
+        <h1>Quest+Aid</h1>
+        <div>
+            <a href="/" class="btn btn-primary">Questions</a>
+            <a href="/profile" class="btn btn-primary">Profile</a>
+            <a href="/users/logout" class="btn btn-danger">Logout</a>
+        </div>
+    </div>
+    <h3>Your Decks</h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name of Deck</th>
+                <th>Number of Cards</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for deck in all_decks %}
+            <tr>
+                <td>{{deck.name}}</td>
+                <td>{{deck.number_of_cards}}</td>
+                <td>
+                    <a href="/decks/{{deck.id}}">View</a> 
+                    {% if session['user_id'] == deck.user_id%}
+                    | <a href="/decks/{{deck.id}}/edit">Edit</a> |
+                    <a href="/decks/{{deck.id}}/delete">Delete</a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="/decks/new" class="btn btn-primary">Create New Deck</a>
+</body>
+</html>
